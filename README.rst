@@ -55,49 +55,13 @@ Gallery
 
 .. image:: http://dotshare.it/public/images/uploads/650.png
 
-**Powerarrow**, porting of romockee_'s
-
-.. image:: http://dotshare.it/public/images/uploads/1453.png
-
-**Powerarrow Dark**
-
-.. image:: http://dotshare.it/public/images/uploads/649.jpg
-
-**Steamburn**, porting of ok100_'s dwm
-
-.. image:: http://dotshare.it/public/images/uploads/648.png
-
-**Blackburn**
-
-.. image:: http://dotshare.it/public/images/uploads/553.png
-
-**Dremora**
-
-.. image:: http://dotshare.it/public/images/uploads/652.png
-
-**Rainbow**
-
-.. image:: http://dotshare.it/public/images/uploads/606.png
-
-**Holo**, requested by amouly_
-
-.. image:: http://dotshare.it/public/images/uploads/651.jpg
-
-**Copland**, inspired by foozer_
-
-.. image:: http://dotshare.it/public/images/uploads/655.png
-
-**Vertex**, requested by swordfischer_
-
-.. image:: http://dotshare.it/public/images/uploads/1432.jpg
-
 Installation
 ============
 
 .. code-block:: shell
 
-    $ git clone --recursive https://github.com/lcpz/awesome-copycats.git
-    $ mv -bv awesome-copycats/* ~/.config/awesome; rm -rf awesome-copycats
+    $ git clone --recursive ${this repository}
+    $ mv -bv awesome-config-multicolor/* ~/.config/awesome; rm -rf awesome-config-multicolor
 
 Usage
 =====
