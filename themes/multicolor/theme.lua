@@ -15,7 +15,7 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
-theme.wallpaper                                 = theme.confdir .. "/wall.png"
+theme.wallpaper                                 = os.getenv("HOME") .. "/synced-folder/wallpapers/appenzell.jpg"
 theme.font                                      = "xos4 Terminus 10"
 theme.menu_bg_normal                            = "#000000"
 theme.menu_bg_focus                             = "#000000"
@@ -111,7 +111,7 @@ theme.cal = lain.widget.calendar({
 -- Weather
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
 theme.weather = lain.widget.weather({
-    city_id = 2643743, -- placeholder (London)
+    city_id = 2657896, -- (Zurich)
     notification_preset = { font = "xos4 Terminus 10", fg = theme.fg_normal },
     weather_na_markup = markup.fontfg(theme.font, "#eca4c4", "N/A "),
     settings = function()
@@ -309,12 +309,12 @@ function theme.at_screen_connect(s)
             memory.widget,
             cpuicon,
             cpu.widget,
+            tempicon,
+            temp.widget,
             -- fsicon,pp
             --theme.fs.widget,
             weathericon,
             theme.weather.widget,
-            tempicon,
-            temp.widget,
             -- baticon,
             -- bat.widget,
             clockicon,
