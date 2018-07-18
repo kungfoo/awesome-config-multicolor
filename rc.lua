@@ -168,7 +168,8 @@ lain.layout.cascade.tile.ncol          = 2
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
 
-print(beautiful)
+naughty.config.defaults['icon_size'] = 128
+
 -- }}}
 
 -- {{{ Menu
