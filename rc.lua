@@ -72,9 +72,8 @@ local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "terminator"
 local editor       = os.getenv("EDITOR") or "nano"
-local gui_editor   = "subl3 -w"
-local browser      = "firefox"
-local guieditor    = "subl3 -w"
+local browser      = "chromium"
+local guieditor    = "subl -w"
 local scrlocker    = "slock"
 local rofimoji     = "rofimoji"
 
@@ -355,9 +354,9 @@ globalkeys = my_table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ altkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+    awful.key({ altkey, "Control", "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
-    awful.key({ altkey, "Shift"   }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    awful.key({ altkey, "Control", "Shift"   }, "h",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
@@ -402,37 +401,24 @@ globalkeys = my_table.join(
               {description = "-10%", group = "hotkeys"}),
 
     -- ALSA volume control
-    awful.key({ altkey }, "Up",
+    awful.key({ }, "XF86AudioRaiseVolume",
         function ()
             os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
             beautiful.volume.update()
         end,
         {description = "volume up", group = "hotkeys"}),
-    awful.key({ altkey }, "Down",
+    awful.key({ }, "XF86AudioLowerVolume",
         function ()
             os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
             beautiful.volume.update()
         end,
         {description = "volume down", group = "hotkeys"}),
-    awful.key({ altkey }, "m",
+    awful.key({ }, "XF86AudioMute",
         function ()
             os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
             beautiful.volume.update()
         end,
         {description = "toggle mute", group = "hotkeys"}),
-    awful.key({ altkey, "Control" }, "m",
-        function ()
-            os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "volume 100%", group = "hotkeys"}),
-    awful.key({ altkey, "Control" }, "0",
-        function ()
-            os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "volume 0%", group = "hotkeys"}),
-
 
     -- Copy primary to clipboard (terminals to gtk)
     awful.key({ modkey }, "c", function () awful.spawn("xsel | xsel -i -b") end,
@@ -477,8 +463,8 @@ globalkeys = my_table.join(
 )
 
 clientkeys = my_table.join(
-    awful.key({ altkey, "Shift"   }, "m",      lain.util.magnify_client,
-              {description = "magnify client", group = "client"}),
+    -- awful.key({ altkey, "Shift"   }, "m",      lain.util.magnify_client,
+    --           {description = "magnify client", group = "client"}),
     awful.key({ modkey,           }, "f",
         function (c)
             c.fullscreen = not c.fullscreen
