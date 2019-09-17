@@ -76,6 +76,7 @@ local gui_editor   = "subl3 -w"
 local browser      = "firefox"
 local guieditor    = "subl3 -w"
 local scrlocker    = "slock"
+local rofimoji     = "rofimoji"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
@@ -263,6 +264,11 @@ globalkeys = my_table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
+
+    -- rofimoji typing
+    -- X screen locker
+    awful.key({ modkey }, "e", function () os.execute(rofimoji) end,
+              {description = "rofimoji emoji picker", group = "hotkeys"}),
 
     -- By direction client focus
     awful.key({ modkey }, "j",
