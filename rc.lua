@@ -70,7 +70,7 @@ awful.spawn.with_shell(
 local chosen_theme = "multicolor"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "terminator"
+local terminal     = "kitty"
 local editor       = os.getenv("EDITOR") or "nano"
 local browser      = "chromium"
 local guieditor    = "subl -w"
