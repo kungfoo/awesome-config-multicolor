@@ -11,17 +11,23 @@ local open     = io.open
 local tonumber = tonumber
 
 -- coretemp
--- lain.widget.temp
-
 local function factory(args)
     local temp     = { widget = wibox.widget.textbox() }
     local args     = args or {}
     local timeout  = args.timeout or 2
-    local tempfile = args.tempfile or "/sys/class/thermal/thermal_zone2/temp"
+    local tempfile = args.tempfile
     local settings = args.settings or function() end
 
+    function temp.find_package_temp_zone()
+        if tempfile then
+            return tempfile
+        end
+        
+        return "/sys/class/thermal/thermal_zone1/temp"
+    end
+
     function temp.update()
-        local f = open(tempfile)
+        local f = open(self.find_package_temp_zone())
         if f then
             coretemp_now = tonumber(f:read("*all")) / 1000
             f:close()
@@ -37,5 +43,6 @@ local function factory(args)
 
     return temp
 end
+
 
 return factory
