@@ -22,12 +22,23 @@ local function factory(args)
         if tempfile then
             return tempfile
         end
-        
-        return "/sys/class/thermal/thermal_zone1/temp"
+
+        local package_temp_id = "x86_pkg_temp"
+        local dirname = '/sys/class/thermal/thermal_zone*/type'
+        local files = io.popen('ls ' .. dirname)
+
+        for path in files:lines() do
+            local f = io.open(path, "r")
+            if f:read() == package_temp_id then
+                local found, _ = path:gsub("type", "temp")
+                return found
+            end
+            io.close(f)
+        end
     end
 
     function temp.update()
-        local f = open(self.find_package_temp_zone())
+        local f = open(temp.find_package_temp_zone())
         if f then
             coretemp_now = tonumber(f:read("*all")) / 1000
             f:close()
